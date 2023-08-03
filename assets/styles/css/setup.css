@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url(../../fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "brandon-grotesque";
+  font-weight: medium;
+  src: url("../../fonts/brandon/Brandon_med.otf");
+}
+
+/* 沒效果 */
+/* @font-face {
+  font-family: "brandon-grotesque";
+  font-weight: bold;
+  src: url("../../fonts/brandon/Brandon_bld.otf");
+} */
+
+@font-face {
+  font-family: "brandon-grotesque-bold";
+  /* 此處設定 font-weight: bold 也無法使用 */
+  src: url("/assets/fonts/brandon/Brandon_bld.otf");
+}
+
+@font-face {
+  font-family: "Zen Kaku Gothic New";
+  src: url("/assets/fonts/Zen_Kaku_Gothic_New/ZenKakuGothicNew-Bold.ttf");
+}
+
+@font-face {
+  font-family: "nimbus-sans-extended";
+  src: url("/assets/fonts/NimbusSanD-BoldExte/NimbusSanD-BoldExte.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+li {
+  list-style: none;
+}
