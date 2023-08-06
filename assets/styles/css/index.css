@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --offset-x: 10rem;
 }
@@ -10,6 +11,81 @@ html {
 .c-image img {
   width: 100%;
   vertical-align: middle;
+}
+
+.c-btn-dialog {
+  --line-height: 2.25em;
+  display: flex;
+  align-items: center;
+  padding: 1.05em;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  border-radius: 3em;
+  border: 2px solid #000;
+  background-color: #fff;
+  font-size: 1.4rem;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: all 300ms;
+}
+.c-btn-dialog::before {
+  content: "";
+  width: 2px;
+  height: var(--line-height);
+  position: absolute;
+  bottom: 0;
+  left: 28%;
+  transform-origin: 0 1px;
+  transform: translateY(calc(100% + 1px)) rotate(-30deg);
+  background-color: #000;
+}
+.c-btn-dialog::after {
+  content: "";
+  width: 0.35em;
+  aspect-ratio: 1/1;
+  position: absolute;
+  bottom: 0;
+  left: 28%;
+  transform: translate(calc(var(--line-height) / 2 - 50%), calc(var(--line-height) * 1.732 / 2 + 50% + 1px));
+  border-radius: 50%;
+  background-color: #000;
+}
+.c-btn-dialog .donut {
+  margin-left: 0.9em;
+  width: 1.3em;
+  aspect-ratio: 1/1;
+  position: relative;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.48em #f7b040;
+  transition: all 300ms;
+}
+.c-btn-dialog .donut::before {
+  content: "➔";
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-35%, -45%);
+  color: #f7b040;
+  opacity: 0;
+}
+.c-btn-dialog:hover .donut {
+  box-shadow: inset 0 0 0 0em #f7b040;
+}
+.c-btn-dialog.enter .donut::before {
+  left: 50%;
+  opacity: 1;
+  transition: left 200ms 300ms, opacity 200ms 300ms;
+}
+.c-btn-dialog.leave .donut::before {
+  left: 0%;
+  transform: translate(80%, -45%);
+  opacity: 0;
+  transition: transform 200ms, opacity 200ms, left 0s 200ms;
 }
 
 .c-btn {
@@ -39,6 +115,33 @@ html {
   right: var(--offset);
   border-radius: 50%;
   box-shadow: inset 0 0 0 1.1em var(--donut-color);
+  transition: all 300ms;
+}
+.c-btn .donut::before {
+  content: "➔";
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-35%, -50%);
+  font-size: 1.5em;
+  color: var(--donut-color);
+  opacity: 0;
+}
+.c-btn:hover .donut {
+  box-shadow: inset 0 0 0 0em var(--donut-color);
+}
+.c-btn.enter .donut::before {
+  left: 50%;
+  opacity: 1;
+  transition: left 200ms 300ms, opacity 200ms 300ms;
+}
+.c-btn.leave .donut::before {
+  left: 0%;
+  transform: translate(80%, -50%);
+  opacity: 0;
+  transition: transform 200ms, opacity 200ms, left 0s 200ms;
 }
 
 .c-main-card {
@@ -118,6 +221,18 @@ html {
   top: 0;
   background-color: rgba(255, 255, 255, 0.95);
 }
+.header a {
+  background-image: linear-gradient(to right, #f7b040, #f7b040 50%, #000 50%);
+  background-size: 200% 200%;
+  background-position: 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  transition: all 0.3s;
+}
+.header a:hover {
+  background-position: 0%;
+}
 .header .logo {
   display: flex;
   margin-left: 1.25em;
@@ -143,10 +258,12 @@ html {
 .header .nav ul li:last-child {
   margin-left: 0.9em;
   border-bottom-left-radius: 0.625em;
+  overflow: hidden;
   background-image: linear-gradient(to top, #f7d151, #f4ba5c);
 }
 .header .nav ul li:last-child a {
   padding-inline: 1.5em;
+  background-image: linear-gradient(to right, #fff, #fff 50%, #000 50%);
 }
 .header .nav ul li a {
   display: flex;
@@ -179,12 +296,11 @@ html {
   color: #ffcf29;
 }
 .section-header .main-area .banner {
-  --base-width-ratio: 9%;
+  --base-width-ratio: 8.3%;
   --base-image-width: 369;
   display: flex;
   justify-content: center;
-  padding-top: 6.8rem;
-  padding-left: 7rem;
+  margin-top: 1em;
   position: relative;
 }
 .section-header .main-area .banner a {
@@ -198,15 +314,18 @@ html {
   --width: calc(var(--base-width-ratio) * var(--base-image-ratio));
   width: var(--width);
 }
-.section-header .main-area .banner .c-image .btn-stylist {
-  margin-bottom: 2em;
-  position: absolute;
-  right: 0;
+.section-header .main-area .banner .c-image:hover .c-btn-dialog {
+  opacity: 1;
 }
 .section-header .main-area .banner .image1 {
   --cur-image-width: 369;
   order: 1;
   margin-top: auto;
+  margin-left: calc(var(--width) * 0.95);
+}
+.section-header .main-area .banner .image1 .btn-stylist {
+  margin-bottom: var(--line-height);
+  right: 62%;
 }
 .section-header .main-area .banner .image2 {
   --cur-image-width: 503;
@@ -226,6 +345,10 @@ html {
   order: 4;
   margin-top: auto;
   margin-left: calc(var(--width) * -0.17);
+}
+.section-header .main-area .banner .image4 .btn-photographer {
+  margin-bottom: calc(var(--line-height) * 0.2);
+  right: 40%;
 }
 .section-header .main-area .banner .image5 {
   --cur-image-width: 455;
@@ -247,7 +370,27 @@ html {
   margin-top: auto;
   margin-left: calc(var(--width) * -0.23);
 }
-.section-header .main-area .banner p {
+.section-header .main-area .banner .image7 .btn-planner {
+  margin-bottom: var(--line-height);
+  padding-block: 0.7em;
+}
+.section-header .main-area .banner .image7 .btn-planner::before {
+  left: 65%;
+  transform: translateY(calc(100% + 1px)) rotate(30deg);
+}
+.section-header .main-area .banner .image7 .btn-planner::after {
+  left: 65%;
+  transform: translate(calc(-1 * (var(--line-height) / 2 + 50% - 2px)), calc(var(--line-height) * 1.732 / 2 + 50% + 1px));
+}
+.section-header .main-area .banner .image7 .btn-planner .btn-content {
+  display: flex;
+  flex-direction: column;
+}
+.section-header .main-area .banner .image7 .btn-planner .btn-content span:last-child {
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+.section-header .main-area .banner .banner-text {
   order: 8;
   align-self: center;
   margin-left: 0.5em;

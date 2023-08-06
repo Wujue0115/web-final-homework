@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>株式会社スタジオゼロ｜写真で暮らしを豊かに。 -</title>
+
+    <script type="module" src="./js/plugins/wave.js"></script>
+    <script type="module" src="./js/plugins/marquee.js"></script>
+
     <link rel="stylesheet" href="./assets/styles/css/normalize.css" />
     <link rel="stylesheet" href="./assets/styles/css/setup.css" />
     <link rel="stylesheet" href="./assets/styles/css/index.css" />
@@ -54,10 +58,17 @@
             <div class="banner">
               <div class="c-image image1">
                 <a href="https://studiozero.co.jp/people/#stylist">
-                  <!-- <div class="c-btn btn-stylist">
+                  <div
+                    class="c-btn-dialog btn-stylist"
+                    w-wave
+                    w-event="mouseenter"
+                    w-background="#f7b04066"
+                    w-duration="300ms"
+                    w-timing-function="ease-in"
+                  >
                     STYLIST
                     <div class="donut"></div>
-                  </div> -->
+                  </div>
                   <!-- 369 x 1407 -->
                   <img src="./assets/images/top-mv_illust01.png" alt="" />
                 </a>
@@ -71,8 +82,21 @@
                 <img src="./assets/images/top-mv_illust03.png" alt="" />
               </div>
               <div class="c-image image4">
-                <!-- 476 x 1507 -->
-                <img src="./assets/images/top-mv_illust04.png" alt="" />
+                <a href="https://studiozero.co.jp/people/#photographer">
+                  <div
+                    class="c-btn-dialog btn-photographer"
+                    w-wave
+                    w-event="mouseenter"
+                    w-background="#f7b04066"
+                    w-duration="300ms"
+                    w-timing-function="ease-in"
+                  >
+                    PHOTOGRAPHER
+                    <div class="donut"></div>
+                  </div>
+                  <!-- 476 x 1507 -->
+                  <img src="./assets/images/top-mv_illust04.png" alt="" />
+                </a>
               </div>
               <div class="c-image image5">
                 <!-- 455 x 1319 -->
@@ -83,10 +107,26 @@
                 <img src="./assets/images/top-mv_illust06.png" alt="" />
               </div>
               <div class="c-image image7">
-                <!-- 706 x 1416 -->
-                <img src="./assets/images/top-mv_illust07.png" alt="" />
+                <a href="https://studiozero.co.jp/people/#planner">
+                  <div
+                    class="c-btn-dialog btn-planner"
+                    w-wave
+                    w-event="mouseenter"
+                    w-background="#f7b04066"
+                    w-duration="300ms"
+                    w-timing-function="ease-in"
+                  >
+                    <div class="btn-content">
+                      <span>PLANNER</span>
+                      <span>&BACK OFFICE </span>
+                    </div>
+                    <div class="donut"></div>
+                  </div>
+                  <!-- 706 x 1416 -->
+                  <img src="./assets/images/top-mv_illust07.png" alt="" />
+                </a>
               </div>
-              <p>
+              <p class="banner-text">
                 笑顔のために<br />
                 あなたとわたしの
               </p>
@@ -104,6 +144,11 @@
               <a
                 href="https://studiozero.co.jp/message/"
                 class="c-btn btn-message"
+                w-wave
+                w-event="mouseenter"
+                w-background="#f7b04066"
+                w-duration="300ms"
+                w-timing-function="ease-in"
               >
                 VIEW MESSAGE
                 <div class="donut"></div>
@@ -188,7 +233,7 @@
                 <img src="./assets/images/top-service_illust01.png" alt="" />
               </div>
             </div>
-            <div class="c-marquee">
+            <div class="c-marquee" w-marquee w-duration="30s">
               <span>Enrich your life with photos.</span>
             </div>
           </div>
@@ -268,6 +313,11 @@
             <a
               href="https://studiozero.co.jp/service/"
               class="c-btn btn-service"
+              w-wave
+              w-event="mouseenter"
+              w-background="#f687b166"
+              w-duration="300ms"
+              w-timing-function="ease-in"
             >
               VIEW OUR SERVICE
               <div class="donut"></div>
@@ -294,7 +344,7 @@
                 <img src="./assets/images/top-shoplist_illust01.png" alt="" />
               </div>
             </div>
-            <div class="c-marquee">
+            <div class="c-marquee" w-marquee w-duration="30s">
               <span>Have fun with photos at the shop near your house.</span>
             </div>
           </div>
@@ -332,7 +382,9 @@
                 </ul>
               </div>
               <div class="map-space">
-                <img src="./assets/images/top-shoplist_map.png" alt="" />
+                <div class="c-image">
+                  <img src="./assets/images/top-shoplist_map.png" alt="" />
+                </div>
                 <ul>
                   <li class="c-shop-spot shop-spot1"></li>
                   <li class="c-shop-spot shop-spot2"></li>
@@ -350,7 +402,7 @@
                 </ul>
               </div>
             </div>
-            <div class="image-marquee">
+            <div class="image-marquee" w-marquee w-duration="30s">
               <div class="c-image image1">
                 <!-- 540 x 540 -->
                 <img src="./assets/images/top-shoplist_slide01.png" alt="" />
@@ -392,6 +444,11 @@
             <a
               href="https://studiozero.co.jp/shoplist/"
               class="c-btn btn-shop-list"
+              w-wave
+              w-event="mouseenter"
+              w-background="#53acff66"
+              w-duration="300ms"
+              w-timing-function="ease-in"
             >
               VIEW SHOP LIST
               <div class="donut"></div>
@@ -426,7 +483,7 @@
                 </div>
               </div>
             </div>
-            <div class="c-marquee">
+            <div class="c-marquee" w-marquee w-duration="30s">
               <span>We make you smile with photos.</span>
             </div>
           </div>
@@ -499,7 +556,15 @@
                 </a>
               </div>
             </div>
-            <a href="https://studiozero.co.jp/people/" class="c-btn btn-people">
+            <a
+              href="https://studiozero.co.jp/people/"
+              class="c-btn btn-people"
+              w-wave
+              w-event="mouseenter"
+              w-background="#67e9ae66"
+              w-duration="300ms"
+              w-timing-function="ease-in"
+            >
               VIEW PEOPLE
               <div class="donut"></div>
             </a>
@@ -533,7 +598,15 @@
               </a>
             </div>
           </div>
-          <a href="https://studiozero.co.jp/news/" class="c-btn btn-news">
+          <a
+            href="https://studiozero.co.jp/news/"
+            class="c-btn btn-news"
+            w-wave
+            w-event="mouseenter"
+            w-background="#f7b04066"
+            w-duration="300ms"
+            w-timing-function="ease-in"
+          >
             VIEW ALL NEWS
             <div class="donut"></div>
           </a>
@@ -586,5 +659,7 @@
       </div>
       <p class="copyright">© studiozero inc.</p>
     </footer>
+
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

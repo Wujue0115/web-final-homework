@@ -15,30 +15,110 @@ html {
   }
 }
 
-// .c-btn-dialog {
-//   display: flex;
-//   align-items: center;
-//   padding: 1.05em;
-//   width: fit-content;
+.c-btn-dialog {
+  --line-height: 2.25em;
 
-//   border-radius: 3em;
-//   border: 2px solid #000;
-//   background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 1.05em;
+  width: fit-content;
 
-//   font-size: 1.4rem;
-//   font-family: "Noto Sans JP", sans-serif;
-//   font-weight: bold;
-//   letter-spacing: 0.1em;
+  position: relative;
 
-//   .donut {
-//     margin-left: 0.9em;
-//     width: 1.3em;
-//     aspect-ratio: 1/1;
+  border-radius: 3em;
+  border: 2px solid #000;
+  background-color: #fff;
+  font-size: 1.4rem;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: all 300ms;
 
-//     border-radius: 50%;
-//     box-shadow: inset 0 0 0 0.45em #fa0;
-//   }
-// }
+  &::before {
+    content: "";
+
+    width: 2px;
+    height: var(--line-height);
+
+    position: absolute;
+    bottom: 0;
+    left: 28%;
+    transform-origin: 0 1px;
+    transform: translateY(calc(100% + 1px)) rotate(-30deg);
+
+    background-color: #000;
+  }
+
+  &::after {
+    content: "";
+
+    width: 0.35em;
+    aspect-ratio: 1/1;
+
+    position: absolute;
+    bottom: 0;
+    left: 28%;
+    transform: translate(
+      calc(var(--line-height) / 2 - 50%),
+      calc(var(--line-height) * 1.732 / 2 + 50% + 1px)
+    );
+
+    border-radius: 50%;
+    background-color: #000;
+  }
+
+  .donut {
+    margin-left: 0.9em;
+    width: 1.3em;
+    aspect-ratio: 1/1;
+
+    position: relative;
+
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.48em #f7b040;
+
+    transition: all 300ms;
+
+    &::before {
+      content: "➔";
+
+      width: 100%;
+      aspect-ratio: 1/1;
+
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(-35%, -45%);
+
+      color: #f7b040;
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    .donut {
+      box-shadow: inset 0 0 0 0em #f7b040;
+    }
+  }
+
+  &.enter {
+    .donut::before {
+      left: 50%;
+      opacity: 1;
+      transition: left 200ms 300ms, opacity 200ms 300ms;
+    }
+  }
+
+  &.leave {
+    .donut::before {
+      left: 0%;
+      transform: translate(80%, -45%);
+      opacity: 0;
+      transition: transform 200ms, opacity 200ms, left 0s 200ms;
+    }
+  }
+}
 
 .c-btn {
   --btn-height: 6.5em;
@@ -73,6 +153,47 @@ html {
 
     border-radius: 50%;
     box-shadow: inset 0 0 0 1.1em var(--donut-color);
+
+    transition: all 300ms;
+
+    &::before {
+      content: "➔";
+
+      width: 100%;
+      aspect-ratio: 1/1;
+
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(-35%, -50%);
+
+      font-size: 1.5em;
+      color: var(--donut-color);
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    .donut {
+      box-shadow: inset 0 0 0 0em var(--donut-color);
+    }
+  }
+
+  &.enter {
+    .donut::before {
+      left: 50%;
+      opacity: 1;
+      transition: left 200ms 300ms, opacity 200ms 300ms;
+    }
+  }
+
+  &.leave {
+    .donut::before {
+      left: 0%;
+      transform: translate(80%, -50%);
+      opacity: 0;
+      transition: transform 200ms, opacity 200ms, left 0s 200ms;
+    }
   }
 }
 
@@ -179,6 +300,19 @@ html {
 
   background-color: rgba(255, 255, 255, 0.95);
 
+  a {
+    background-image: linear-gradient(to right, #f7b040, #f7b040 50%, #000 50%);
+    background-size: 200% 200%;
+    background-position: 100%;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s;
+
+    &:hover {
+      background-position: 0%;
+    }
+  }
+
   .logo {
     display: flex;
     margin-left: 1.25em;
@@ -208,10 +342,18 @@ html {
         &:last-child {
           margin-left: 0.9em;
           border-bottom-left-radius: 0.625em;
+          overflow: hidden;
           background-image: linear-gradient(to top, #f7d151, #f4ba5c);
 
           a {
             padding-inline: 1.5em;
+
+            background-image: linear-gradient(
+              to right,
+              #fff,
+              #fff 50%,
+              #000 50%
+            );
           }
         }
 
@@ -261,13 +403,12 @@ html {
     }
 
     .banner {
-      --base-width-ratio: 9%;
+      --base-width-ratio: 8.3%;
       --base-image-width: 369;
 
       display: flex;
       justify-content: center;
-      padding-top: 6.8rem;
-      padding-left: 7rem;
+      margin-top: 1em;
 
       position: relative;
 
@@ -284,11 +425,10 @@ html {
         --width: calc(var(--base-width-ratio) * var(--base-image-ratio));
         width: var(--width);
 
-        .btn-stylist {
-          margin-bottom: 2em;
-
-          position: absolute;
-          right: 0;
+        &:hover {
+          .c-btn-dialog {
+            opacity: 1;
+          }
         }
       }
 
@@ -297,6 +437,13 @@ html {
 
         order: 1;
         margin-top: auto;
+        margin-left: calc(var(--width) * 0.95);
+
+        .btn-stylist {
+          margin-bottom: var(--line-height);
+
+          right: 62%;
+        }
       }
 
       .image2 {
@@ -322,6 +469,12 @@ html {
         order: 4;
         margin-top: auto;
         margin-left: calc(var(--width) * -0.17);
+
+        .btn-photographer {
+          margin-bottom: calc(var(--line-height) * 0.2);
+
+          right: 40%;
+        }
       }
 
       .image5 {
@@ -348,9 +501,37 @@ html {
         order: 7;
         margin-top: auto;
         margin-left: calc(var(--width) * -0.23);
+
+        .btn-planner {
+          margin-bottom: var(--line-height);
+          padding-block: 0.7em;
+
+          &::before {
+            left: 65%;
+            transform: translateY(calc(100% + 1px)) rotate(30deg);
+          }
+
+          &::after {
+            left: 65%;
+            transform: translate(
+              calc(-1 * calc(var(--line-height) / 2 + 50% - 2px)),
+              calc(var(--line-height) * 1.732 / 2 + 50% + 1px)
+            );
+          }
+
+          .btn-content {
+            display: flex;
+            flex-direction: column;
+
+            span:last-child {
+              font-size: 1.2rem;
+              white-space: nowrap;
+            }
+          }
+        }
       }
 
-      p {
+      .banner-text {
         order: 8;
         align-self: center;
         margin-left: 0.5em;
